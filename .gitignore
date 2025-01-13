@@ -1,0 +1,29 @@
+# Byte-compiled Python files
+*.py[cod]
+
+# Log files
+*.log
+
+# Virtual environment files
+.venv
+env
+venv
+
+# IDE files
+.vscode
+.pydevproject
+.project
+
+# Other files
+__pycache__
+.DS_Store
+Thumbs.db
+
+.env
+
+node_modules
+.idea
+tmp/*
+assets/tests
+static
+gunman.sql
