@@ -28,6 +28,10 @@ class Command(BaseCommand):
             soup = BeautifulSoup(response.text, 'html.parser')
 
             items = soup.find_all('div', {'class': 'inzerat'})[1:]
+            if not items:
+                print('no items')
+                print(response.text)
+                break
             for item in items:
                 link = item.find('a')
                 url = link['href']
