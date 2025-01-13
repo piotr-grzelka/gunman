@@ -15,7 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         portal = get_portal('optykamysliwska')
 
-        for page in range(1, 3):
+        for page in range(1, 5):
             print("Page ", page)
             response = requests.get(
                 'https://www.optykamysliwska.pl/wyszukiwanie.html?query=7%2C0%2C0%2C%2C%2C%2C%2C%2C&page=' + str(page))

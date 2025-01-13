@@ -12,7 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         portal = get_portal('netgun')
 
-        for page in range(1, 3):
+        for page in range(1, 5):
             page_url = 'https://www.netgun.pl/ogloszenia?page=' + str(page)
             print("Page ", page, page_url)
             response = requests.get(page_url)
