@@ -17,9 +17,9 @@ class Command(BaseCommand):
 
         for page in range(1, 3):
             time.sleep(1)
-            page_url = f'http://bron-i-amunicja.armybazar.eu/pl/strona/{page}/  '
+            page_url = f'http://bron-i-amunicja.armybazar.eu/pl/strona/{page}/'
             print("Page ", page, page_url)
-            response = requests.get(page_url)
+            response = requests.get(page_url, allow_redirects=False)
 
             if response.status_code != 200:
                 print('Error getting response from ArmyBazar', response.status_code, response.text)
