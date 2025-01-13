@@ -15,8 +15,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         portal = get_portal('armybazar')
 
-        Ad.objects.filter(portal=portal).delete()
-
         for page in range(1, 5):
             time.sleep(1)
             page_url = f'http://bron-i-amunicja.armybazar.eu/pl/strona/{page}/'
