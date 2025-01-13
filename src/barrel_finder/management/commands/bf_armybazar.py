@@ -15,6 +15,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         portal = get_portal('armybazar')
 
+        Ad.objects.filter(portal=portal).delete()
+
         for page in range(1, 5):
             time.sleep(1)
             page_url = f'http://bron-i-amunicja.armybazar.eu/pl/strona/{page}/'
@@ -57,7 +59,7 @@ class Command(BaseCommand):
 
                 print(title, url, price, kind, date, location)
 
-                if Ad.objects.filter(external_id=url).exists():
+                if Ad.objects.filter(url=url).exists():
                     continue
 
                 time.sleep(0.2)
