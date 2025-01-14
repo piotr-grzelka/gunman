@@ -1,0 +1,17 @@
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="card-title">
+            {{ ad.name }}
+        </h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            {{ ad.description }}
+        </p>
+    </div>
+    <div class="card-footer">
+        {% if ad.price %}
+        Cena: {{ ad.price }} zł
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{% extends 'barrel_finder/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}Barrel finder - znajdź broń dla siebie{% endblock %}
+
+{% block content %}
+
+    {% for ad in latest %}
+        {% include 'barrel_finder/_ad.html' %}
+    {% endfor %}
+
+    <a class="btn btn-primary" href="{% url 'list-all' %}">Wszystkie ogłoszenia</a>
+{% endblock %}

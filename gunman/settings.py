@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-at2(+!xzbl(co+475be4rqgy-=0t@e-ld=u48okc3zxvymopu5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -41,11 +41,17 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
+    'django_bootstrap5',
+    'django_hosts',
+]
+
+INSTALLED_APPS += [
     'src.tests',
     'src.barrel_finder',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,9 +59,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware'
 ]
 
 ROOT_URLCONF = 'gunman.urls'
+ROOT_HOSTCONF = 'gunman.hosts'
+DEFAULT_HOST = 'barrel_finder'
 
 TEMPLATES = [
     {

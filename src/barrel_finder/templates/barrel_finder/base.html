@@ -1,0 +1,27 @@
+{% extends 'django_bootstrap5/bootstrap5.html' %}
+{% load django_bootstrap5 %}
+
+{% block bootstrap5_title %}{% block title %}{% endblock %}{% endblock %}
+
+
+{% block bootstrap5_content %}
+    <header>
+        <div class="container">
+            <h1>Barrel finder <span class="text-muted">BETA</span></h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Barrel finder - znajdź broń dla siebie</p>
+        </div>
+    </footer>
+
+{% endblock %}
