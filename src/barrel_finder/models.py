@@ -24,6 +24,7 @@ class Portal(models.Model):
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    slug = models.SlugField()
     name = models.CharField(max_length=255)
     weight = models.IntegerField(default=0)
 
