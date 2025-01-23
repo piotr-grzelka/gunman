@@ -1,7 +1,13 @@
+{% extends 'barrel_finder/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}{{ ad.name }}{% endblock %}
+
+{% block content %}
 <div class="card mb-3">
     <div class="card-header">
         <h5 class="card-title">
-            <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
+            {{ ad.name }}
         </h5>
     </div>
     <div class="card-body">
@@ -9,9 +15,16 @@
             {{ ad.description }}
         </p>
     </div>
+
+    <div class="card-body">
+        {{ad.url}}
+    </div>
+
     <div class="card-footer">
         {% if ad.price %}
         Cena: {{ ad.price }} zł
         {% endif %}
     </div>
 </div>
+
+{% endblock %}

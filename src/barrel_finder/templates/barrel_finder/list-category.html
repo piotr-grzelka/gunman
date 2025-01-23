@@ -1,0 +1,47 @@
+{% extends 'barrel_finder/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}{{category.name}}{% endblock %}
+
+{% block content %}
+
+{% for ad in page_obj %}
+{% include 'barrel_finder/_ad.html' %}
+{% endfor %}
+
+
+{% if page_obj.has_previous %}
+<a href="{% url 'list-category'  category_slug=category.slug page=1 %}">
+    ◀️◀️
+</a>
+<a href="{% url 'list-category'  category_slug=category.slug page=page_obj.previous_page_number %}">
+    ◀️
+</a>
+{% endif%}
+
+<a>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
+
+{% if page_obj.has_next %}
+<a href="{% url 'list-category'  category_slug=category.slug page=page_obj.next_page_number %}">
+    ▶️
+</a>
+<a href="{% url 'list-category'  category_slug=category.slug page=page_obj.paginator.num_pages %}">
+    ▶️▶️
+</a>
+{% endif%}
+
+<hr>
+
+{% for page_number in page_obj.adjusted_elided_pages %}
+{% if page_number == page_obj.paginator.ELLIPSIS %}
+{{page_number}}
+{% else %}
+<a
+        href="{% url 'list-category' category_slug=category.slug page=page_number %}"
+        class="{% if page_number == page_obj.number %}current{% endif %}"
+>
+    {{page_number}}
+</a>
+{% endif %}
+{% endfor %}
+{% endblock %}

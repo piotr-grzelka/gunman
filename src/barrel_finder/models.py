@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+from django.utils.text import slugify
+
 portals = {
     'netgun': ('https://www.netgun.pl/', 'NetGun'),
     'optykamysliwska': ('https://www.optykamysliwska.pl/', 'Optyka Myśliwska'),
@@ -51,6 +53,7 @@ class Ad(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     external_id = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
+    slug = models.SlugField()
     portal = models.ForeignKey(Portal, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     url = models.URLField(null=True)
@@ -68,10 +71,28 @@ class Ad(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, force_insert=False, force_update=False, using=None, update_fields=None):
+        if not self.slug:
+            i = 0
+            while True:
+                self.slug = slugify(self.name)[:45]
+                if i > 0:
+                    self.slug += '-' + str(i)
+                if not Ad.objects.filter(slug=self.slug).exists():
+                    break
+
+                if i > 100:
+                    raise Exception('Too many slugs for name: ' + self.name)
+                i += 1
+
+        super().save(*args, force_insert=force_insert, force_update=force_update, using=using,
+                     update_fields=update_fields)
+
     class Meta:
         ordering = ['-date']
         verbose_name = 'Ogłoszenie'
         verbose_name_plural = 'Ogłoszenia'
+
 
 class AdImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)

@@ -37,7 +37,7 @@
             {{page_number}}
         {% else %}
             <a
-                href="{% url 'list-all' category_slug=category_slug page=page_number %}"
+                href="{% url 'list-all' page=page_number %}"
                 class="{% if page_number == page_obj.number %}current{% endif %}"
             >
                 {{page_number}}
