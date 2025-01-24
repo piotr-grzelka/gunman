@@ -67,6 +67,7 @@ class Ad(models.Model):
     location = models.CharField(max_length=255, null=True)
     phone = models.CharField(max_length=255, null=True)
     external_category = models.CharField(max_length=255, null=True)
+    thumb = models.ImageField(null=True)
 
     def __str__(self):
         return self.name

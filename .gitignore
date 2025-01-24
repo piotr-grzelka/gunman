@@ -27,3 +27,4 @@ tmp/*
 assets/tests
 static
 gunman.sql
+media/*

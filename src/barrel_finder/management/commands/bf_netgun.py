@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand
 
 from src.barrel_finder.helpers import get_portal
-from src.barrel_finder.models import Ad
+from src.barrel_finder.models import Ad, AdImage
 
 
 class Command(BaseCommand):
@@ -85,5 +85,9 @@ class Command(BaseCommand):
                     )
 
                     model.save()
+
+                    images = soup2.find('div', {'class': 'images'}).find_all('a')
+                    for img in images:
+                        AdImage.objects.create(ad=model, url=img['href'])
 
             time.sleep(1)

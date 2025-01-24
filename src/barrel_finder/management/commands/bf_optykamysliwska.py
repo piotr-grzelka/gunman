@@ -4,7 +4,7 @@ import pytz
 from django.core.management.base import BaseCommand
 
 from src.barrel_finder.helpers import get_portal
-from src.barrel_finder.models import Ad
+from src.barrel_finder.models import Ad, AdImage
 
 from bs4 import BeautifulSoup
 import requests
@@ -98,3 +98,10 @@ class Command(BaseCommand):
                 ad.kind = kind
                 ad.external_category = category
                 ad.save()
+
+                try:
+                    images = soup2.find('table', {'class': 'Images'}).find_all('a')
+                    for img in images:
+                        AdImage.objects.create(ad=ad, url="https://www.optykamysliwska.pl" + img['href'])
+                except AttributeError:
+                    pass

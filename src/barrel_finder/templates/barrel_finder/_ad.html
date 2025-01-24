@@ -5,6 +5,10 @@
         </h5>
     </div>
     <div class="card-body">
+        {% if ad.thumb %}
+        <img src="{{ ad.thumb.url }}" class="card-img-left" alt="{{ ad.name }}" width="300px" height="300px">
+        {% else %}
+        {% endif %}
         <p class="card-text">
             {{ ad.description }}
         </p>
