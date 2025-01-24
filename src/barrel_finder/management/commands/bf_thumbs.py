@@ -10,7 +10,7 @@ from src.barrel_finder.models import Ad, AdImage
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for ad in Ad.objects.filter(
+        for ad in Ad.objects.distinct().filter(
                 Q(thumb__isnull=True) | Q(thumb=''),
                 adimage__id__isnull=False
         ).order_by('-created_at').all()[:100]:
