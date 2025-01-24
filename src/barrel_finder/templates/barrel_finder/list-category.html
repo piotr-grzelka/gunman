@@ -5,6 +5,8 @@
 
 {% block content %}
 
+<h2 class="section-title">{{category.name}}</h2>
+
 {% for ad in page_obj %}
 {% include 'barrel_finder/_ad.html' %}
 {% endfor %}
