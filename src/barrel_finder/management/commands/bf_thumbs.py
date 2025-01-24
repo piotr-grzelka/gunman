@@ -12,6 +12,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for ad in Ad.objects.distinct().filter(
                 Q(thumb__isnull=True) | Q(thumb=''),
+                thumb_failed=False,
                 adimage__id__isnull=False
         ).order_by('-created_at').all()[:100]:
             print(ad.id, ad.name, end=" ")
@@ -36,3 +37,7 @@ class Command(BaseCommand):
                     break
                 else:
                     print("failed")
+
+            if not ad.thumb:
+                ad.thumb_failed = True
+                ad.save()
