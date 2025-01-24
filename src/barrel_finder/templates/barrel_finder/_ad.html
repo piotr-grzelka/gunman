@@ -1,7 +1,7 @@
 <div class="ad-box">
     <div class="image">
         {% if ad.thumb %}
-        <img src="{{ ad.thumb.url }}" class="card-img-left" alt="{{ ad.name }}" width="300px" height="300px">
+        <img src="/media/{{ ad.thumb }}" class="card-img-left" alt="{{ ad.name }}" width="300px" height="300px">
         {% else %}
         {% endif %}
     </div>
