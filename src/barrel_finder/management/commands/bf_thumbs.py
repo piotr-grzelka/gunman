@@ -16,21 +16,23 @@ class Command(BaseCommand):
         ).order_by('-created_at').all()[:100]:
             print(ad.id, ad.name, end=" ")
 
-            image = AdImage.objects.filter(ad=ad).first()
+            images = AdImage.objects.filter(ad=ad).all()
 
-            if not image:
+            if not images:
                 continue
 
-            print("resizing")
-            resized = resize_and_crop_image_from_url(image.url)
+            for image in images:
+                print("resizing")
+                resized = resize_and_crop_image_from_url(image.url)
 
-            if resized:
-                print("resized")
-                _, extension = os.path.splitext(image.url)
-                fn = '/ad/' + ad.id.__str__() + extension
-                path = settings.MEDIA_ROOT + fn
-                resized.save(path)
-                ad.thumb = fn
-                ad.save()
-            else:
-                print("failed")
+                if resized:
+                    print("resized")
+                    _, extension = os.path.splitext(image.url)
+                    fn = '/ad/' + ad.id.__str__() + extension
+                    path = settings.MEDIA_ROOT + fn
+                    resized.save(path)
+                    ad.thumb = fn
+                    ad.save()
+                    break
+                else:
+                    print("failed")
