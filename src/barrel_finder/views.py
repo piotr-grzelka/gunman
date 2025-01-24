@@ -21,12 +21,12 @@ def list_all_view(request, page=1):
 
 
 def list_category_view(request, category_slug, page=1):
-    items = Ad.objects.order_by('-date').all()
+    category = get_object_or_404(Category, slug=category_slug)
+    items = Ad.objects.filter(category=category).order_by('-date').all()
     paginator = Paginator(items, 25)
     page_obj = paginator.get_page(page)
     page_obj.adjusted_elided_pages = paginator.get_elided_page_range(page)
 
-    category = get_object_or_404(Category, slug=category_slug)
 
     return render(request, 'barrel_finder/list-category.html', {
         'page_obj': page_obj,

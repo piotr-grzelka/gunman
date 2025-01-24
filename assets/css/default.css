@@ -637,7 +637,7 @@ button:hover {
 }
 
 .navbar-brand {
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
 }
 
@@ -646,6 +646,7 @@ button:hover {
     display: block;
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+    height: 60px;
 }
 
 .navbar-toggler {
