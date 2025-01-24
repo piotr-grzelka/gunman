@@ -11,13 +11,16 @@ class Command(BaseCommand):
         categories = (
             ('pistols', 'Pistolety', 0, ['Pistolety']),
             ('revolvers', 'Rewolwery', 10, ['Rewolwery']),
-            ('rifles', 'Karabiny', 20, ['Karabiny', 'broń: sztucer repetier', 'broń: kniejówka', 'broń: dryling']),
+            ('rifles', 'Karabiny', 20,
+             ['Karabiny', 'broń: sztucer repetier', 'broń: kniejówka', 'broń: dryling', 'broń: sztucer łamany',
+              'broń: varmint', 'broń: automat kulowy', 'broń: ekspres']),
             ('shotguns', 'Strzelby', 30, ['Gładkolufowa', 'broń: bock', 'broń: dubeltówka']),
             ('cp', 'CP', 40, ['Broń czarnoprochowa']),
             ('ammo', 'Amunicja', 50, ['Amunicja']),
             ('other', 'Inne', 60,
              ['Optyka celownicza', 'Amunicja / elaboracja', 'Akcesoria strzeleckie', 'Części i tuning broni',
-              'Pozostałe', 'Szafy, sejfy', 'Akcesoria', 'polowania', 'kolby i akcesoria', 'psy myśliwskie', 'lunety']),
+              'Pozostałe', 'Szafy, sejfy', 'Akcesoria', 'polowania', 'kolby i akcesoria', 'psy myśliwskie', 'lunety',
+              'montaże', 'inne myśliwskie']),
         )
 
         for slug, name, weight, external_categories in categories:
