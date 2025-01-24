@@ -14,8 +14,16 @@
         </p>
     </div>
     <div class="card-footer">
-        {% if ad.price %}
-        Cena: {{ ad.price }} zł
-        {% endif %}
+        <div class="row">
+            <div class="col">
+                {% if ad.price %}
+                Cena: {{ ad.price }} zł
+                {% endif %}
+            </div>
+            <div class="col text-end">
+                {{ ad.date }}
+            </div>
+        </div>
+
     </div>
 </div>
