@@ -1,29 +1,25 @@
-<div class="card mb-3">
-    <div class="card-header">
-        <h5 class="card-title">
-            <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
-        </h5>
-    </div>
-    <div class="card-body">
+<div class="ad-box">
+    <div class="image">
         {% if ad.thumb %}
         <img src="{{ ad.thumb.url }}" class="card-img-left" alt="{{ ad.name }}" width="300px" height="300px">
         {% else %}
         {% endif %}
-        <p class="card-text">
-            {{ ad.description }}
-        </p>
     </div>
-    <div class="card-footer">
-        <div class="row">
+    <div class="ad-description">
+        <h5>
+            <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
+        </h5>
+        <div class="ad-details">
+            <p>{{ ad.description }}</p>
+             <div class="row">
             <div class="col">
-                {% if ad.price %}
-                Cena: {{ ad.price }} zł
-                {% endif %}
+                <h6>{% if ad.price %}Cena: {{ ad.price }} zł{% endif %}</h6>
             </div>
             <div class="col text-end">
-                {{ ad.date }}
+                <h6>{{ ad.date }}</h6>
             </div>
         </div>
-
+        </div>
     </div>
+
 </div>

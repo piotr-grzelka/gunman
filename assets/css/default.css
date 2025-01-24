@@ -846,7 +846,7 @@ button#searchsubmit {
 }
 
 
-/* Job-Board-ankit
+/* ad-Board-ankit
 ================================================== */
 
 /* # Homepages
@@ -1397,7 +1397,7 @@ input.search-2 {
 
 /*counter-section*/
 
-.jb-job-counter {
+.ad-counter {
     background-color: rgba(210, 201, 255, 0.04);
 }
 
@@ -1531,21 +1531,14 @@ input.search-2 {
     transform: scale(1.07);
 }
 
-/*jb Recent-Jobs*/
-
-.jb-recent-jobs {
-    border-top: 1px solid rgba(210, 201, 255, 0.1);
-    background-color: #ffffff;
-}
-
-.job-box-wrapper {
+.ad-box-wrapper {
     border: 2px solid rgba(210, 201, 255, 0.1);
     float: left;
     width: 100%;
     border-radius: 6px;
 }
 
-.jb-job-box {
+.ad-box {
     float: left;
     width: 100%;
     padding: 20px 20px 15px;
@@ -1553,7 +1546,7 @@ input.search-2 {
     position: relative;
 }
 
-.jb-job-box:hover {
+.ad-box:hover {
     background-color: rgb(240 246 244);
 }
 
@@ -1562,63 +1555,43 @@ input.search-2 {
     color: #B6EF00;
 }
 
-.jb-job-box:last-child {
+.ad-box:last-child {
     border: none;
 }
 
-.jb-job-box .company-logo {
-    width: 90px;
-    padding-top: 17px;
+.ad-box .image {
+    width: 300px;
     text-align: center;
     position: absolute;
 }
 
-.jb-job-box .company-logo img {
-
+.ad-box .image img {
     border-radius: 6px;
 }
 
-.job-description {
-    margin: 0 0 0 110px;
+.ad-description {
+    margin: 0 0 0 320px;
+    min-height: 310px;
 }
 
-.jb-job-box .job-description h5 {
+.ad-box .ad-description h5 {
     font-size: 17px;
     margin: 5px 0 10px;
     font-weight: 600;
 }
 
-.jb-job-box .job-description ul {
-    display: inline-block;
-    list-style: none;
-    font-weight: 500;
-    padding: 0;
-    margin: 0;
-}
-
-.jb-job-box .job-description ul li {
-    float: left;
-    margin-right: 20px;
-    font-size: 16px;
-    color: rgb(26 25 31);
-}
-
-.jb-job-box .job-description ul li:last-child {
-    margin: 0;
-}
-
-.jb-job-box .job-description h6 {
+.ad-box .ad-description h6 {
     font-size: 16px;
     margin-bottom: 5px;
     color: rgb(26 25 31);
 }
 
-.jb-job-box .job-description a {
+.ad-box .ad-description a {
     color: #1a191f;
     font-weight: 500;
 }
 
-.jb-job-box .apply-button {
+.ad-box .apply-button {
     float: right;
     display: inline-block;
     padding: 7px 30px;
@@ -2451,7 +2424,7 @@ input.search-2 {
 =====================================*/
 
 
-/* # Job-Detail
+/* # ad-Detail
 =====================================*/
 
 /*jb-section-details*/
@@ -2864,7 +2837,7 @@ video {
     content: none;
 }
 
-/*jb-job-details2*/
+/*ad-details2*/
 
 .jb-tab-section {
     background-color: white;
@@ -2956,19 +2929,19 @@ hr {
     margin: 0 0 50px;
 }
 
-#new-jobs a {
+#new-ads a {
     color: #b6ef00;
     font-size: 16px;
     font-weight: 500;
 }
 
-#new-jobs a:hover {
+#new-ads a:hover {
     text-decoration: underline;
 }
 
-/*jb similar-Jobs*/
+/*jb similar-ads*/
 
-.jb-similar-jobs {
+.jb-similar-ads {
     padding-top: 40px;
 }
 
@@ -2999,7 +2972,7 @@ hr {
 }
 
 
-/* #END Job-Detail
+/* #END ad-Detail
 =====================================*/
 
 
@@ -3168,23 +3141,23 @@ hr {
 =====================================*/
 
 
-/* # Add Job
+/* # Add ad
 =====================================*/
 
-/*jb-add-job*/
-.job-info-1 {
+/*jb-add-ad*/
+.ad-info-1 {
     margin-top: 0;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, .06);
     border-radius: 6px;
 }
 
-.job-info-2 {
+.ad-info-2 {
     margin-top: 30px;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, .06);
     border-radius: 6px;
 }
 
-.jb-job-form {
+.ad-form {
     background-color: #16243e;
     border: 1px solid rgba(210, 201, 255, 0.1);
     padding: 20px;
@@ -3192,7 +3165,7 @@ hr {
     margin-bottom: 30px;
 }
 
-.job-title {
+.ad-title {
     color: #fff;
     display: block;
     font-size: 18px;
@@ -3246,7 +3219,7 @@ label.upload-btn input[type=file] {
 }
 
 
-/* #END Add Job
+/* #END Add ad
 =====================================*/
 
 
@@ -3974,7 +3947,7 @@ label.upload-btn input[type=file] {
 
 
 
-/* Job-Board-Responsive
+/* ad-Board-Responsive
 ================================================== */
 
 @media (min-width: 1310px) {
@@ -4400,7 +4373,7 @@ label.upload-btn input[type=file] {
         border-bottom: none;
     }
 
-    .jb-job-box .apply-button {
+    .ad-box .apply-button {
         float: none;
         margin-top: 0;
     }
@@ -4410,11 +4383,11 @@ label.upload-btn input[type=file] {
         width: 100%;
     }
 
-    .jb-job-box .job-description ul {
+    .ad-box .ad-description ul {
         margin-bottom: 5px;
     }
 
-    .jb-job-box .job-description h6 {
+    .ad-box .ad-description h6 {
         margin-bottom: 15px;
     }
 
@@ -4509,18 +4482,18 @@ label.upload-btn input[type=file] {
         line-height: 24px;
     }
 
-    .jb-job-box .job-description {
+    .ad-box .ad-description {
         margin: 0;
         width: 100%;
         float: left;
     }
 
-    .jb-job-box .job-description h5 {
+    .ad-box .ad-description h5 {
         margin-bottom: 10px;
         font-size: 20px;
     }
 
-    .jb-job-box .company-logo {
+    .ad-box .company-logo {
 
         position: inherit;
     }
@@ -4589,7 +4562,7 @@ label.upload-btn input[type=file] {
         border-bottom: none;
     }
 
-    .jb-job-counter>.container>.row>div:nth-child(3) .counter-box {
+    .ad-counter>.container>.row>div:nth-child(3) .counter-box {
         border-bottom: none;
     }
 
