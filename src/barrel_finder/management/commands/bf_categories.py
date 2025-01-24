@@ -54,12 +54,14 @@ class Command(BaseCommand):
             n.name for n in Category.objects.all().order_by('weight')
         ])
 
-        for ad in Ad.objects.filter(category__isnull=True).all():
+        for ad in Ad.objects.filter(category__isnull=True).order_by('-created_at').all()[:4]:
             print(ad.name, ad.external_category, sep=" | ")
 
             content = "Znajdż kategorię dla tego ogłoszenia: " + ad.name
-            content += "\n Dostępne kategorie: \n" + categories
-            content += "\n\n zwróć tylko nazwę kategorii, bez innych informacji"
+            content += "\nKategoria z zewnętrznego portalu: " + ad.external_category
+            content += "\nOpis ogłoszenia: " + ad.description[:100]
+            content += "\nDostępne kategorie: \n" + categories
+            content += "\n\nzwróć tylko nazwę kategorii, bez innych informacji"
 
             response = client.chat.completions.create(
                 model="gpt-4o",
@@ -74,4 +76,3 @@ class Command(BaseCommand):
             ad.category = Category.objects.get(name=reply)
             ad.save()
 
-            break
