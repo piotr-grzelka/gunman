@@ -2,6 +2,7 @@ import os
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
+from django.db.models import Q
 
 from src.barrel_finder.helpers import resize_and_crop_image_from_url
 from src.barrel_finder.models import Ad, AdImage
@@ -9,7 +10,7 @@ from src.barrel_finder.models import Ad, AdImage
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        for ad in Ad.objects.filter(thumb__isnull=True).order_by('-created_at').all()[:10]:
+        for ad in Ad.objects.filter(Q(thumb__isnull=True) | Q(thumb='')).order_by('-created_at').all()[:100]:
             image = AdImage.objects.filter(ad=ad).first()
             if not image:
                 continue
