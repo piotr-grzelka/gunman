@@ -12,38 +12,53 @@
 {% endfor %}
 
 
-    {% if page_obj.has_previous %}
-        <a href="{% url 'list-all' 1 %}">
-            ◀️◀️
-        </a>
-        <a href="{% url 'list-all' page_obj.previous_page_number %}">
-            ◀️
-        </a>
-    {% endif%}
-
-    <a>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>
-
-    {% if page_obj.has_next %}
-        <a href="{% url 'list-all' page_obj.next_page_number %}">
-            ▶️
-        </a>
-        <a href="{% url 'list-all' page_obj.paginator.num_pages %}">
-            ▶️▶️
-        </a>
-    {% endif%}
-
-    <hr>
-
-    {% for page_number in page_obj.adjusted_elided_pages %}
-        {% if page_number == page_obj.paginator.ELLIPSIS %}
-            {{page_number}}
-        {% else %}
-            <a
-                href="{% url 'list-all' page=page_number %}"
-                class="{% if page_number == page_obj.number %}current{% endif %}"
-            >
-                {{page_number}}
+<nav aria-label="paginacja">
+    <ul class="paginator">
+        {% if page_obj.has_previous %}
+        <li class="paginator-item paginator-item-prev">
+            <a class="" href="{% url 'list-all' 1 %}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+                <span class="sr-only">Start</span>
             </a>
+        </li>
+        <li class="paginator-item paginator-item-prev">
+            <a class="" href="{% url 'list-all' page_obj.previous_page_number %}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Wstecz</span>
+            </a>
+        </li>
+        {% endif%}
+
+        {% for page_number in page_obj.adjusted_elided_pages %}
+        {% if page_number == page_obj.paginator.ELLIPSIS %}
+        <li class="paginator-item">
+            <a href="#" class="">{{page_number}}</a>
+        </li>
+        {% else %}
+        <li class="paginator-item{% if page_number == page_obj.number %} active{% endif %}">
+            <a class="" href="{% url 'list-all' page=page_number %}">{{page_number}}</a>
+        </li>
         {% endif %}
-    {% endfor %}
+        {% endfor %}
+
+
+        {% if page_obj.has_next %}
+        <li class="paginator-item paginator-item-next">
+            <a class="" href="{% url 'list-all' page_obj.next_page_number %}">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Dalej</span>
+            </a>
+        </li>
+        <li class="paginator-item paginator-item-next">
+            <a class="" href="{% url 'list-all' page_obj.paginator.num_pages %}">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+                <span class="sr-only">Koniec</span>
+            </a>
+        </li>
+        {% endif%}
+
+        <!--        <a>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</a>-->
+
+    </ul>
+</nav>
 {% endblock %}
