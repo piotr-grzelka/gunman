@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 {% load django_bootstrap5 static %}
 {% load i18n %}
-{% get_current_language as LANGUAGE_CODE %}
-{% bootstrap_setting "color_mode" as COLOR_MODE %}
-{% bootstrap_setting "javascript_in_head" as BOOTSTRAP_JAVASCRIPT_IN_HEAD %}
 <html lang="pl">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Znajdź broń dla siebie z{% endblock %} - Barrel finder</title>
     {% bootstrap_css %}
-    {% if BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
-
-    {% block bootstrap5_extra_head %}{% endblock %}
-
+    <link href="https://cdn.jsdelivr.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
     <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=4">
 </head>
 
@@ -22,61 +16,68 @@
 
 <div class="navigation-wrap start-header start-style jb-navigation">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="/" target="_self">
-                        <img src="{% static 'images/barrel-finder-logo.svg' %}" alt="logo" height="80px" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <nav class="navbar navbar-expand-xl navbar-light">
+            <a class="navbar-brand" href="/" target="_self">
+                <img src="{% static 'images/barrel-finder-logo.svg' %}" alt="logo" height="80px"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        <ul class="navbar-nav py-4 py-md-0 jb-list">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/all" role="button" aria-haspopup="true"
-                                   aria-expanded="false">Wszystkie</a>
-                            </li>
+                <ul class="navbar-nav py-4 py-md-0 jb-list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all" role="button" aria-haspopup="true"
+                           aria-expanded="false">Wszystkie</a>
+                    </li>
 
-                            {% for category in bf_categories %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/c/{{ category.slug }}" role="button">{{ category.name }}</a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-<!--                        <div class="jb-header-right">-->
-<!--                            <form role="search" method="get" id="searchform" class="header-search">-->
-<!--                                <div class="input-group">-->
-<!--                                    <input type="text" class="search-input" name="search-box">-->
-<!--                                    <button class="header-search-button" type="submit">-->
-<!--                                        <i class="fas fa-search"></i>-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                            </form>-->
+                    {% for category in bf_categories %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/c/{{ category.slug }}" role="button">{{ category.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <div class="jb-header-right">
+                    <form role="search" method="get" id="searchform" action="/search" class="header-search">
+                        <div class="input-group">
+                            <input type="text" class="search-input" name="query" value="{{ request.GET.query }}">
+                            <button class="header-search-button" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
 
-<!--                            <a href="signup.html" class="btn theme-border-btn">-->
-<!--                                <i class="fas fa-user"></i>-->
-<!--                                <span>Sign Up</span>-->
-<!--                            </a>-->
-<!--                            <a href="signin.html" class="btn theme-border-btn">-->
-<!--                                <i class="fas fa-lock"></i>-->
-<!--                                <span>Login</span>-->
-<!--                            </a>-->
-<!--                        </div>-->
-                    </div>
-                </nav>
+                    <!--                                            <a href="signup.html" class="btn theme-border-btn">-->
+                    <!--                                                <i class="fas fa-user"></i>-->
+                    <!--                                                <span>Sign Up</span>-->
+                    <!--                                            </a>-->
+                    <!--                                            <a href="signin.html" class="btn theme-border-btn">-->
+                    <!--                                                <i class="fas fa-lock"></i>-->
+                    <!--                                                <span>Login</span>-->
+                    <!--                                            </a>-->
+                </div>
             </div>
-        </div>
+        </nav>
     </div>
 </div>
 
 {% block bootstrap5_before_content %}{% endblock %}
 <div class="container">
     {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
-    {% block content %}(no content){% endblock %}
+    <div class="row">
+        <div class="col-md-10">
+            {% block content %}(no content){% endblock %}
+        </div>
+        <div class="col-md-2">
+            {% block sidebar %}
+            <div class="card text-center py-4">
+                Miejsce na Twoją reklamę
+            </div>
+            {% endblock %}
+        </div>
+    </div>
 </div>
 
 {% block bootstrap5_after_content %}{% endblock %}
@@ -86,9 +87,8 @@
         <p>Barrel finder - znajdź broń dla siebie</p>
     </div>
 </footer>
-
-{% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
-{% block bootstrap5_extra_script %}{% endblock %}
+{% bootstrap_javascript %}
+{% block extra_script %}{% endblock %}
 </body>
 
 </html>
