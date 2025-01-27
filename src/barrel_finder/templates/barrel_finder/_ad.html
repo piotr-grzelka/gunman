@@ -9,17 +9,27 @@
         {% endif %}
     </div>
     <div class="description col-md-9">
-        <h5>
-            <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
-        </h5>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>
+                    <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
+                </h5>
+            </div>
+            <div class="col-md-6 text-end">
+                <span>{{ ad.date }},</span>
+                    <span>{{ ad.location }}</span>
+            </div>
+        </div>
+
         <div class="ad-details">
-            <p>{{ ad.description }}</p>
+            <p>{{ ad.clean_description }}</p>
             <div class="row">
                 <div class="col">
                     <h6>{% if ad.price %}Cena: {{ ad.price }} zł{% endif %}</h6>
                 </div>
                 <div class="col text-end">
-                    <h6>{{ ad.date }}</h6>
+                    <a href="{% url 'ad' ad.slug %}" class="btn btn-secondary btn-sm">więcej</a>
+
                 </div>
             </div>
         </div>

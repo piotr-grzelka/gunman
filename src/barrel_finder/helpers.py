@@ -4,6 +4,25 @@ import requests
 from PIL import Image
 from io import BytesIO
 
+import re
+
+
+def clean_text(text):
+    phone_patterns = [
+        r'\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}',
+        # +XX-XXX-XXX-XXXX, (XXX) XXX-XXXX, etc.
+        r'\d{2,4}[-.\s]?\d{3}[-.\s]?\d{3,4}',  # XX XXX XXX, XXX-XXX-XXXX, etc.
+        r'\(\d{2,4}\)\s?\d{3}[-.\s]?\d{3,4}',  # (XX) XXX-XXX
+    ]
+
+    for pattern in phone_patterns:
+        text = re.sub(pattern, '### ### ###', text)
+
+    email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+    text = re.sub(email_pattern, '####@####.##', text)
+
+    return text
+
 
 def resize_and_crop_image_from_url(image_url, target_size=(300, 300)):
     try:
@@ -33,6 +52,7 @@ def resize_and_crop_image_from_url(image_url, target_size=(300, 300)):
         print(f"Błąd podczas pobierania obrazu: {e}")
     except Exception as e:
         print(f"Błąd przetwarzania obrazu: {e}")
+
 
 def get_portal(key):
     domain = portals[key][0]

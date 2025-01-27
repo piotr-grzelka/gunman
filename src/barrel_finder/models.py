@@ -60,6 +60,7 @@ class Ad(models.Model):
     price = models.FloatField(null=True)
     date = models.DateTimeField(null=True)
     description = models.TextField(null=True)
+    clean_description = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     views = models.IntegerField(default=0)

@@ -12,12 +12,13 @@
     </div>
     <div class="card-body">
         <p class="card-text">
-            {{ ad.description }}
+            {{ ad.clean_description }}
         </p>
     </div>
 
     <div class="card-body">
-        {{ad.url}}
+        <a href="{{ad.url}}" target="_blank" rel="nofollow">{{ad.url}}</a>
+
     </div>
 
     <div class="card-footer">
