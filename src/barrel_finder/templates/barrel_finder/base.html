@@ -9,10 +9,10 @@
     {% bootstrap_css %}
     <link href="https://cdn.jsdelivr.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css" rel="stylesheet">
     {% block extra_head %}{% endblock %}
-    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=5">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=7">
 </head>
 
-<body style="padding-top: 100px">
+<body style="padding-top: 120px">
 
 <div class="navigation-wrap start-header start-style jb-navigation">
     <div class="container">
@@ -67,10 +67,10 @@
 <div class="container">
     {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             {% block content %}(no content){% endblock %}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             {% block sidebar %}
             <div class="card text-center py-4">
                 Miejsce na Twoją reklamę

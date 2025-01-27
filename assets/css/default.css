@@ -1521,60 +1521,34 @@ input.search-2 {
     transform: scale(1.07);
 }
 
-.g-box-wrapper {
-    border: 2px solid rgba(210, 201, 255, 0.1);
-    float: left;
-    width: 100%;
-    border-radius: 6px;
-}
-
 .g-box {
-    padding: 20px 20px 15px;
-    border-bottom: 2px solid rgba(210, 201, 255, 0.1);
-    position: relative;
-}
-
-.g-box:hover {
-    background-color: rgb(240 246 244);
-}
-
-.button-right .apply-button:hover {
-    border: 1px solid #B6EF00;
-    color: #B6EF00;
-}
-
-.g-box:last-child {
-    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.176);
+    padding: 15px 0;
 }
 
 .g-box .image {
-    width: 300px;
-    text-align: center;
-    position: absolute;
 }
 
 .g-box .image img {
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
-.ad-description {
-    margin: 0 0 0 320px;
-    min-height: 310px;
+.g-box .description {
 }
 
-.g-box .ad-description h5 {
+.g-box .description h5 {
     font-size: 17px;
     margin: 5px 0 10px;
     font-weight: 600;
 }
 
-.g-box .ad-description h6 {
+.g-box .description h6 {
     font-size: 16px;
     margin-bottom: 5px;
     color: rgb(26 25 31);
 }
 
-.g-box .ad-description a {
+.g-box .description a {
     color: #1a191f;
     font-weight: 500;
 }

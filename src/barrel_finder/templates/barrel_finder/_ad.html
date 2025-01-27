@@ -1,25 +1,27 @@
-<div class="g-box">
-    <div class="image">
+{% load static %}
+
+<div class="g-box row">
+    <div class="image col-md-3">
         {% if ad.thumb %}
-        <img src="/media/{{ ad.thumb }}" class="card-img-left" alt="{{ ad.name }}" width="300px" height="300px">
+        <img src="/media/{{ ad.thumb }}" class="img-fluid" alt="{{ ad.name }}">
         {% else %}
+        <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid"/>
         {% endif %}
     </div>
-    <div class="ad-description">
+    <div class="description col-md-9">
         <h5>
             <a href="{% url 'ad' ad.slug %}">{{ ad.name }}</a>
         </h5>
         <div class="ad-details">
             <p>{{ ad.description }}</p>
-             <div class="row">
-            <div class="col">
-                <h6>{% if ad.price %}Cena: {{ ad.price }} zł{% endif %}</h6>
+            <div class="row">
+                <div class="col">
+                    <h6>{% if ad.price %}Cena: {{ ad.price }} zł{% endif %}</h6>
+                </div>
+                <div class="col text-end">
+                    <h6>{{ ad.date }}</h6>
+                </div>
             </div>
-            <div class="col text-end">
-                <h6>{{ ad.date }}</h6>
-            </div>
-        </div>
         </div>
     </div>
-
 </div>
