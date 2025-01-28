@@ -7,6 +7,7 @@ portals = {
     'netgun': ('https://www.netgun.pl/', 'NetGun'),
     'optykamysliwska': ('https://www.optykamysliwska.pl/', 'Optyka Myśliwska'),
     'armybazar': ('http://bron-i-amunicja.armybazar.eu/pl/', 'ArmyBazar'),
+    'armoryauctions': ('https://armory-auctions.pl/', 'Armory Auctions'),
 }
 
 

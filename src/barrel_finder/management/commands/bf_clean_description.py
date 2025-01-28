@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Clean description'
 
     def handle(self, *args, **options):
-        for ad in Ad.objects.all():
+        for ad in Ad.objects.filter(clean_description__isnull=True).all():
             desc = ad.description[:500]
             ad.clean_description = clean_text(desc)
             ad.save()
