@@ -3,9 +3,9 @@
 <div class="g-box row">
     <div class="image col-md-3">
         {% if ad.thumb %}
-        <img src="/media/{{ ad.thumb }}" class="img-fluid" alt="{{ ad.name }}">
+        <img src="/media/{{ ad.thumb }}" class="img-fluid br8px" alt="{{ ad.name }}">
         {% else %}
-        <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid"/>
+        <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid br8px"/>
         {% endif %}
     </div>
     <div class="description col-md-9">
@@ -29,7 +29,6 @@
                 </div>
                 <div class="col text-end">
                     <a href="{% url 'ad' ad.slug %}" class="btn btn-secondary btn-sm">więcej</a>
-
                 </div>
             </div>
         </div>

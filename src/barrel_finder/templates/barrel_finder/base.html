@@ -9,7 +9,7 @@
     {% bootstrap_css %}
     <link href="https://cdn.jsdelivr.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css" rel="stylesheet">
     {% block extra_head %}{% endblock %}
-    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=7">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=12">
 </head>
 
 <body style="padding-top: 120px">
@@ -72,7 +72,14 @@
         </div>
         <div class="col-md-3">
             {% block sidebar %}
-            <div class="card text-center py-4">
+
+            <a href="https://ebrokerpartner.pl/polecajacy/Grdw9" rel="nofollow" target="_blank">
+                <img src="https://kreacje.ebroker.pl/kreacje/0a8f4bac3894de50dc509bf2f9d61bb2.jpg" class="mb-3"
+                     width="300" height="250"/>
+            </a>
+
+            <script type="text/javascript" src="https://ebrokerpartner.pl/target-baner-get/40755/87232/"></script>
+            <div class="card text-center py-4 my-4">
                 Miejsce na Twoją reklamę
             </div>
             {% endblock %}
@@ -82,11 +89,29 @@
 
 {% block bootstrap5_after_content %}{% endblock %}
 
-<footer>
+<footer class="jb-footer">
     <div class="container">
-        <p>Barrel finder - znajdź broń dla siebie</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-content">
+                    <a href="index.html" class="jb-footer-logo">
+                        <img src="{% static 'images/barrel-finder-logo.svg' %}" alt="logo" height="60px"/>
+                    </a>
+                    <span class="jb-footer-copyright">
+                            Copyright ©2025 Gunman.pl. All Rights Reserved
+                        </span>
+                    <nav class="jb-footer-nav">
+                        <!--                            <a href="aboutus.html">About Us</a>-->
+                        <!--                            <a href="faq.html">FAQ</a>-->
+                        <a href="/about">O projekcie</a>
+                        <a href="/privacy">Polityka prywatności</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
+
 {% bootstrap_javascript %}
 {% block extra_script %}{% endblock %}
 </body>

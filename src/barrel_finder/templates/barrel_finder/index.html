@@ -1,13 +1,45 @@
 {% extends 'barrel_finder/base.html' %}
-{% load django_bootstrap5 %}
+{% load django_bootstrap5 static %}
 
 {% block title %}Barrel finder - znajdź broń dla siebie{% endblock %}
 
 {% block content %}
 
-    {% for ad in latest %}
-        {% include 'barrel_finder/_ad.html' %}
-    {% endfor %}
+<div class="categories-boxes-container">
+    {% for category in categories %}
+    <a href="/c/{{category.slug}}" class="category-box">
+        <h4>{{category.name}}</h4>
+    </a>
+    {%endfor%}
+</div>
 
-    <a class="btn btn-primary" href="{% url 'list-all' %}">Wszystkie ogłoszenia</a>
+
+<h2 class="section-title">Najnowsze ogłoszenia</h2>
+
+<div class="row">
+    {% for ad in latest %}
+    <div class="col-md-3">
+        <div class="image">
+            {% if ad.thumb %}
+            <img src="/media/{{ ad.thumb }}" class="img-fluid br8px" alt="{{ ad.name }}">
+            {% else %}
+            <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid br8px"/>
+            {% endif %}
+        </div>
+        <h5>
+            <a href="{% url 'ad' ad.slug %}">{{ ad.name|truncatechars:22 }}</a>
+        </h5>
+    </div>
+
+    {% endfor %}
+</div>
+
+<div class="text-center">
+    <a class="btn btn-outline-secondary" href="{% url 'list-all' %}">Wszystkie ogłoszenia</a>
+</div>
+
+<div class="text-center my-4">
+    <script type="text/javascript" src="https://ebrokerpartner.pl/target-baner-get/40755/81475/"></script>
+</div>
+
 {% endblock %}
