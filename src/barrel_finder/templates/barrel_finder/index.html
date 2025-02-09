@@ -7,10 +7,11 @@
 
 <div class="alert alert-info">
     <h4 class="alert-heading">Informacja</h4>
-    <p>Tutaj miał powstać serwis agregujący ogłoszenia z portali ogłoszeniowych.
+    <p>Tutaj miał powstać serwis agregujący ogłoszenia z portali ogłoszeniowych dotyczących sprzedaży używanej broni
+        palnej.
         Niestety właściciele tego typu portali nie wyrazili chęci współpracy.
-        Wobec czego portal powstał ale ogłoszeń wyświetlał nie będzie.
-        Poniżej zamieszczam odpowiedzi z innych portali ogłoszeniowych.</p>
+        Wobec czego portal powstał ale ogłoszeń wyświetlał nie będzie, a przynajmniej Wy ich nie zobaczycie.
+        Będę z niego korzystał sam. Poniżej zamieszczam odpowiedzi z właścicieli innych portali.</p>
 </div>
 
 <div class="alert alert-warning">
@@ -28,7 +29,7 @@
     <div class="float-end">netgun.pl i optykamysliwska.pl</div>
     <p>
         nie wyrażam<br/>
-jeśli ogłoszenia skopiowane z NetGun lub optykamysliwska znajdą się w Pańskim serwisie, to spotkamy się w sądzie
+        jeśli ogłoszenia skopiowane z NetGun lub optykamysliwska znajdą się w Pańskim serwisie, to spotkamy się w sądzie
     </p>
 </div>
 
@@ -36,19 +37,21 @@ jeśli ogłoszenia skopiowane z NetGun lub optykamysliwska znajdą się w Pańsk
     <div class="float-end">gunday.pl</div>
     <p>
         Dzień dobry Pani Piotrze.<br/>
-Dziękuję za złożone zapytanie.<br/>
-Informuję, że nie wyrażam zgody na jakiekolwiek pobieranie danych z naszego portalu, zarówno ogłoszeń jak również innych materiałów informacyjnych.<br/>
-Już kiedyś udzieliłem takiego zezwolenia i nic dobrego z tego nie wyszło. Ponadto mogę poinformować, bo to żadna tajemnica, że w ostatnich 3 miesiącach jest Pan już 4 osobą z takim pomysłem i zapytaniem.<br/>
-Pozdrawiam<br/>
-****** *****<br/>
-Administrator GunDay.pl<br/>
+        Dziękuję za złożone zapytanie.<br/>
+        Informuję, że nie wyrażam zgody na jakiekolwiek pobieranie danych z naszego portalu, zarówno ogłoszeń jak
+        również innych materiałów informacyjnych.<br/>
+        Już kiedyś udzieliłem takiego zezwolenia i nic dobrego z tego nie wyszło. Ponadto mogę poinformować, bo to żadna
+        tajemnica, że w ostatnich 3 miesiącach jest Pan już 4 osobą z takim pomysłem i zapytaniem.<br/>
+        Pozdrawiam<br/>
+        ****** *****<br/>
+        Administrator GunDay.pl<br/>
     </p>
 </div>
 
 <div class="categories-boxes-container">
     {% for category in categories %}
     <a href="/c/{{category.slug}}" class="category-box">
-        <h4>{{category.name}}</h4>
+        <h4>{{category.name}} ({{category.qty}})</h4>
     </a>
     {%endfor%}
 </div>

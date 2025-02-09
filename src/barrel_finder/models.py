@@ -29,6 +29,7 @@ class Category(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     slug = models.SlugField()
     name = models.CharField(max_length=255)
+    qty = models.IntegerField(default=0)
     weight = models.IntegerField(default=0)
 
     def __str__(self):

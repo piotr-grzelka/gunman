@@ -55,7 +55,7 @@ class Command(BaseCommand):
             n.name for n in Category.objects.all().order_by('weight')
         ])
 
-        for ad in Ad.objects.filter(category__isnull=True).order_by('-created_at').all()[:4]:
+        for ad in Ad.objects.filter(category__isnull=True).order_by('-created_at').all()[:1]:
             print(ad.name, ad.external_category, sep=" | ")
 
             content = "Znajdż kategorię dla tego ogłoszenia: " + ad.name
@@ -77,3 +77,8 @@ class Command(BaseCommand):
             ad.category = Category.objects.get(name=reply)
             ad.save()
 
+
+        for category in Category.objects.all():
+            category.qty = Ad.objects.filter(category=category).count()
+            category.save()
+            print(category.name, category.qty)
