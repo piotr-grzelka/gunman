@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
@@ -12,7 +13,7 @@ def index_view(request):
         'categories': Category.objects.all()
     })
 
-
+@login_required
 def list_all_view(request):
     page = request.GET.get('page', 1)
     items = Ad.objects.order_by('-date').all()
@@ -24,7 +25,7 @@ def list_all_view(request):
         'page_obj': page_obj,
     })
 
-
+@login_required
 def list_search_view(request):
     query = request.GET.get('query')
     page = request.GET.get('page', 1)
@@ -44,7 +45,7 @@ def list_search_view(request):
         'query': query
     })
 
-
+@login_required
 def list_category_view(request, category_slug):
     page = request.GET.get('page', 1)
     category = get_object_or_404(Category, slug=category_slug)
@@ -58,7 +59,7 @@ def list_category_view(request, category_slug):
         'category': category
     })
 
-
+@login_required
 def ad_view(request, ad_slug):
     ad = get_object_or_404(Ad, slug=ad_slug)
     return render(request, 'barrel_finder/ad.html', {'ad': ad})

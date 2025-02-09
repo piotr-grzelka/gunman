@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import path
 
 from . import views
@@ -12,4 +13,5 @@ urlpatterns = [
     path('v/<str:ad_slug>', views.ad_view, name='ad'),
     path('privacy', views.privacy, name='privacy'),
     path('about', views.about, name='about'),
+    path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

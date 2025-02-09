@@ -5,6 +5,46 @@
 
 {% block content %}
 
+<div class="alert alert-info">
+    <h4 class="alert-heading">Informacja</h4>
+    <p>Tutaj miał powstać serwis agregujący ogłoszenia z portali ogłoszeniowych.
+        Niestety właściciele tego typu portali nie wyrazili chęci współpracy.
+        Wobec czego portal powstał ale ogłoszeń wyświetlał nie będzie.
+        Poniżej zamieszczam odpowiedzi z innych portali ogłoszeniowych.</p>
+</div>
+
+<div class="alert alert-warning">
+    <div class="float-end">gieldabroni.pl</div>
+    <p>
+        Dzień dobry,<br/>
+        dziękuję za wiadomość. <br/>
+        Nie wyrażam zgody. <br/>
+        Pozdrawiam,<br/>
+        **** ******
+    </p>
+</div>
+
+<div class="alert alert-warning">
+    <div class="float-end">netgun.pl i optykamysliwska.pl</div>
+    <p>
+        nie wyrażam<br/>
+jeśli ogłoszenia skopiowane z NetGun lub optykamysliwska znajdą się w Pańskim serwisie, to spotkamy się w sądzie
+    </p>
+</div>
+
+<div class="alert alert-warning">
+    <div class="float-end">gunday.pl</div>
+    <p>
+        Dzień dobry Pani Piotrze.<br/>
+Dziękuję za złożone zapytanie.<br/>
+Informuję, że nie wyrażam zgody na jakiekolwiek pobieranie danych z naszego portalu, zarówno ogłoszeń jak również innych materiałów informacyjnych.<br/>
+Już kiedyś udzieliłem takiego zezwolenia i nic dobrego z tego nie wyszło. Ponadto mogę poinformować, bo to żadna tajemnica, że w ostatnich 3 miesiącach jest Pan już 4 osobą z takim pomysłem i zapytaniem.<br/>
+Pozdrawiam<br/>
+****** *****<br/>
+Administrator GunDay.pl<br/>
+    </p>
+</div>
+
 <div class="categories-boxes-container">
     {% for category in categories %}
     <a href="/c/{{category.slug}}" class="category-box">
@@ -19,27 +59,31 @@
 <div class="row">
     {% for ad in latest %}
     <div class="col-md-3">
+
         <div class="image">
-            {% if ad.thumb %}
-            <img src="/media/{{ ad.thumb }}" class="img-fluid br8px" alt="{{ ad.name }}">
-            {% else %}
             <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid br8px"/>
-            {% endif %}
         </div>
         <h5>
-            <a href="{% url 'ad' ad.slug %}">{{ ad.name|truncatechars:22 }}</a>
+            <a href="#">...</a>
         </h5>
+
+        <!--        <div class="image">-->
+        <!--            {% if ad.thumb %}-->
+        <!--            <img src="/media/{{ ad.thumb }}" class="img-fluid br8px" alt="{{ ad.name }}">-->
+        <!--            {% else %}-->
+        <!--            <img src="{% static 'images/no-image.png' %}" alt="brak zdjęcia ogłoszenia" class="img-fluid br8px"/>-->
+        <!--            {% endif %}-->
+        <!--        </div>-->
+        <!--        <h5>-->
+        <!--            <a href="{% url 'ad' ad.slug %}">{{ ad.name|truncatechars:22 }}</a>-->
+        <!--        </h5>-->
     </div>
 
     {% endfor %}
 </div>
 
-<div class="text-center">
+<div class="text-center mb-3">
     <a class="btn btn-outline-secondary" href="{% url 'list-all' %}">Wszystkie ogłoszenia</a>
-</div>
-
-<div class="text-center my-4">
-    <script type="text/javascript" src="https://ebrokerpartner.pl/target-baner-get/40755/81475/"></script>
 </div>
 
 {% endblock %}
