@@ -9,6 +9,9 @@ class Question(models.Model):
     image = models.CharField(max_length=255, blank=True, null=True)
     pzlow_id = models.IntegerField()
 
+    flashcard_question = models.TextField(null=True)
+    flashcard_answer = models.TextField(null=True)
+
     objects = models.Manager()
 
     def __str__(self):
