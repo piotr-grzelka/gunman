@@ -4602,8 +4602,8 @@ label.upload-btn input[type=file] {
 
 .flashcard-container, .question, .answer {
     width: 70vw;
-    height: 40vw;
-    margin: 50px auto;
+    height: 80vh;
+    margin: 40px auto;
 }
 
 .flashcard {
