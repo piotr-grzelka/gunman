@@ -1,22 +1,27 @@
 {% extends 'tests/base.html' %}
 {% load django_bootstrap5 static %}
 
-{% block title %}Barrel finder - znajdź broń dla siebie{% endblock %}
+{% block title %}{{question.flashcard_question|truncatewords:5}}{% endblock %}
 
 {% block content %}
-
-<div class="card flashcard">
-    <div class="awers">
-        {{ question.flashcard_question }}
-    </div>
-    <hr>
-    <div class="rewers">
-        {{ question.flashcard_answer }}
+<div class="flashcard-container">
+    <div class="flashcard ">
+        <div class="question card">
+            <div class="content">
+                {{ question.flashcard_question }}
+            </div>
+        </div>
+        <div class="answer card">
+            <div class="content">
+                {{ question.flashcard_answer }}
+            </div>
+        </div>
     </div>
 </div>
 
+
 <div class="text-center my-2">
-<a href="{% url 'flash-card' random_next %}" class="btn btn-success btn-xs">następna</a>
+    <a href="{% url 'flash-card' random_next %}" class="btn btn-success btn-xs">następna</a>
 </div>
 
 {% endblock %}

@@ -9,17 +9,15 @@
     {% bootstrap_css %}
     <link href="https://cdn.jsdelivr.net/npm/fontawesome-free-6.2.1@6.2.1/css/all.min.css" rel="stylesheet">
     {% block extra_head %}{% endblock %}
-    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=15">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}?b1=16">
 </head>
 
 <body>
 
 
 {% block bootstrap5_before_content %}{% endblock %}
-<div class="container">
-    {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
-    {% block content %}(no content){% endblock %}
-</div>
+{% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+{% block content %}(no content){% endblock %}
 
 {% block bootstrap5_after_content %}{% endblock %}
 

@@ -4596,15 +4596,40 @@ label.upload-btn input[type=file] {
     background-color: #b6ef00;
 }
 
-.flashcard {
-    max-width: 600px;
-    text-align: center;
-    margin: 10px auto;
-    padding: 40px;
-    font-size: 16px;
+.flashcard-container:hover .flashcard, .flashcard-container:active .flashcard {
+    transform: rotateY(180deg);
 }
 
-.flashcard hr {
-    border-top: 1px solid green;
-    margin: 20px;
+.flashcard-container, .question, .answer {
+    width: 70vw;
+    height: 40vw;
+    margin: 50px auto;
+}
+
+.flashcard {
+    transition: 0.5s;
+    transform-style: preserve-3d;
+}
+
+.question {
+    z-index: 5;
+}
+
+.answer {
+    transform: rotateY(180deg);
+}
+
+.question, .answer {
+    backface-visibility: hidden;
+    margin: auto;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    padding: 20% 50px 0 50px;
+    font-size: 40pt;
+    line-height: 40pt;
 }
