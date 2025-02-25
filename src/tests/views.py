@@ -11,7 +11,10 @@ def flashcard_view(request, pk=None):
     question = Question.objects.filter(id=pk).get()
     random_next = Question.objects.filter(flashcard_question__isnull=False).exclude(id=question.id).order_by('?').first().id
 
+    count_all = Question.objects.filter(flashcard_question__isnull=False).count()
+
     return render(request, 'tests/flashcard.html', {
         'question': question,
-        'random_next': random_next
+        'random_next': random_next,
+        'count_all': count_all
     })

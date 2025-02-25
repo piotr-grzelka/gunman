@@ -15,7 +15,10 @@ class Command(BaseCommand):
             api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
         )
 
-        for q in Question.objects.filter(flashcard_question__isnull=True, image__isnull=True).all()[:1]:
+        for q in Question.objects.filter(flashcard_question__isnull=False, flashcard_no=0).all():
+            q.save()
+
+        for q in Question.objects.filter(flashcard_question__isnull=True, image__isnull=True).order_by('?').all()[:1]:
             a = Answer.objects.filter(question=q, valid=True).get()
 
             content = "Przeformułuj następujce pytanie i odpowiedź do formatu fiszki"
@@ -34,7 +37,6 @@ class Command(BaseCommand):
             print("a:", a.answer)
             print("r:", reply)
             print("---------------------------------")
-
 
             q.flashcard_question = reply[0].strip()
             q.flashcard_answer = reply[1].strip()

@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="flashcard-container">
-    <div class="flashcard ">
+    <div class="flashcard">
         <div class="question card">
             <div class="content">
                 {{ question.flashcard_question }}
@@ -21,6 +21,7 @@
 
 
 <div class="text-center my-2">
+    <div>fiszka {{ question.flashcard_no }} z {{ count_all }}</div>
     <a href="{% url 'flash-card' random_next %}" class="btn btn-success btn-xs">następna</a>
 </div>
 
