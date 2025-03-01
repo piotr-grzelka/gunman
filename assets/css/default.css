@@ -4596,44 +4596,43 @@ label.upload-btn input[type=file] {
     background-color: #b6ef00;
 }
 
-.flashcard-container:hover .flashcard, .flashcard-container:active .flashcard {
-    transform: rotateY(180deg);
-}
-
-.flashcard-container, .question, .answer {
+.flashcard-container {
     width: 90vw;
-    height: 75vh;
-    margin: 40px auto;
-}
-
-.flashcard-container .flashcard {
-    transition: 0.5s;
-    transform-style: preserve-3d;
-}
-
-.flashcard-container .question {
-    z-index: 5;
-}
-
-.flashcard-container .answer {
-    transform: rotateY(180deg);
-}
-
-.flashcard-container .question, .flashcard-container .answer {
-    backface-visibility: hidden;
-    margin: auto;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-
+    height: 90vh;
+    margin: 40px auto 20px auto;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.flashcard-container .content {
-    font-size: 25pt;
-    line-height: 26pt;
-    padding: 0 20px;
+.flashcard-question, .flashcard-answer {
+    flex-grow: 1;
+    font-size: 20pt;
+    line-height: 21pt;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard-answer {
+    cursor: pointer;
+}
+
+.flashcard-hidden-answer {
+    display: none;
+}
+
+.flashcard-answer-visible .btn-show-answer {
+    display: none;
+}
+
+.flashcard-answer-visible .flashcard-hidden-answer {
+    display: block;
+    cursor: default;
+}
+
+.flashcard-container hr {
+    margin: 0 50px;
+    border-top: 1px solid rgba(0, 0, 0, 0.176);
 }

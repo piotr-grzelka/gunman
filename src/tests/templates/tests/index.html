@@ -1,0 +1,17 @@
+{% extends 'tests/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Testy</h1>
+                <div class="alert alert-info">
+                    serwis w trakcie budowy
+                </div>
+                <a href="{% url 'flash-card-random' %}" class="btn btn-secondary">kliknij tutaj aby zobaczyć losową fiszkę</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}r

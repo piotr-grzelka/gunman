@@ -1,28 +1,61 @@
 {% extends 'tests/base.html' %}
 {% load django_bootstrap5 static %}
 
-{% block title %}{{question.flashcard_question|truncatewords:5}}{% endblock %}
+{% block title %}{{ question.flashcard_question|truncatewords:5 }}{% endblock %}
 
 {% block content %}
-<div class="flashcard-container">
-    <div class="flashcard">
-        <div class="question card">
-            <div class="content">
-                {{ question.flashcard_question }}
-            </div>
+
+    <div class="flashcard-container card">
+        <div class="flashcard-question text-center">
+            {{ question.flashcard_question }}
         </div>
-        <div class="answer card">
-            <div class="content">
+        <hr/>
+        <div class="flashcard-answer">
+            <span class="text-muted btn-show-answer">kliknij aby zobaczyć odpowiedź</span>
+            <div class="flashcard-hidden-answer text-center">
                 {{ question.flashcard_answer }}
             </div>
         </div>
+        <div class="flashcard-counter text-center">
+            fiszka {{ question.flashcard_no }} z {{ count_all }}
+        </div>
+        <div class="flashcard-buttons btn-group">
+            <a href="{% url 'flash-card' prev_card.id %}" class="btn btn-success btn-xs">poprzednia</a>
+            <a href="{% url 'flash-card-random' %}" class="btn btn-success btn-xs">losowa</a>
+            <a href="{% url 'flash-card' next_card.id %}" class="btn btn-success btn-xs">następna</a>
+        </div>
     </div>
-</div>
-
-
-<div class="text-center my-2">
-    <div>fiszka {{ question.flashcard_no }} z {{ count_all }}</div>
-    <a href="{% url 'flash-card' random_next %}" class="btn btn-success btn-xs">następna</a>
-</div>
+    {#    #}
+    {#    #}
+    {#<div class="flashcard-container">#}
+    {#    <div class="flashcard">#}
+    {#        <div class="question card">#}
+    {#            <div class="content">#}
+    {#                {{ question.flashcard_question }}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <div class="answer card">#}
+    {#            <div class="content">#}
+    {#                {{ question.flashcard_answer }}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#</div>#}
+    {##}
+    {##}
+    {#<div class="text-center my-2">#}
+    {#    <div>fiszka {{ question.flashcard_no }} z {{ count_all }}</div>#}
+    {#    <a href="{% url 'flashcard' random_next %}" class="btn btn-success btn-xs">następna</a>#}
+    {#</div>#}
 
 {% endblock %}
+
+{% block extra_script %}
+    <script>
+        const el = document.querySelector(".flashcard-answer");
+        el.addEventListener("click", function (event) {
+            event.preventDefault();
+            el.classList.add("flashcard-answer-visible");
+        });
+    </script>
+{% endblock extra_script %}
