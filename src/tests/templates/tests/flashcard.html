@@ -6,6 +6,9 @@
 {% block content %}
 
     <div class="flashcard-container card">
+        <div class="flashcard-counter text-center text-muted">
+            fiszka {{ question.flashcard_no }} z {{ count_all }}
+        </div>
         <div class="flashcard-question text-center">
             {{ question.flashcard_question }}
         </div>
@@ -16,37 +19,13 @@
                 {{ question.flashcard_answer }}
             </div>
         </div>
-        <div class="flashcard-counter text-center">
-            fiszka {{ question.flashcard_no }} z {{ count_all }}
-        </div>
-        <div class="flashcard-buttons btn-group">
-            <a href="{% url 'flash-card' prev_card.id %}" class="btn btn-success btn-xs">poprzednia</a>
-            <a href="{% url 'flash-card-random' %}" class="btn btn-success btn-xs">losowa</a>
-            <a href="{% url 'flash-card' next_card.id %}" class="btn btn-success btn-xs">następna</a>
+
+        <div class="flashcard-buttons">
+            <a href="{% url 'flash-card' prev_card.kind prev_card.id %}" class="btn btn-outline-primary">poprzednia</a>
+            <a href="{% url 'flash-card-random' question.kind %}" class="btn btn-outline-primary">losowa</a>
+            <a href="{% url 'flash-card' next_card.kind next_card.id %}" class="btn btn-outline-primary">następna</a>
         </div>
     </div>
-    {#    #}
-    {#    #}
-    {#<div class="flashcard-container">#}
-    {#    <div class="flashcard">#}
-    {#        <div class="question card">#}
-    {#            <div class="content">#}
-    {#                {{ question.flashcard_question }}#}
-    {#            </div>#}
-    {#        </div>#}
-    {#        <div class="answer card">#}
-    {#            <div class="content">#}
-    {#                {{ question.flashcard_answer }}#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-    {#</div>#}
-    {##}
-    {##}
-    {#<div class="text-center my-2">#}
-    {#    <div>fiszka {{ question.flashcard_no }} z {{ count_all }}</div>#}
-    {#    <a href="{% url 'flashcard' random_next %}" class="btn btn-success btn-xs">następna</a>#}
-    {#</div>#}
 
 {% endblock %}
 

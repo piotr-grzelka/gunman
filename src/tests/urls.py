@@ -7,8 +7,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index_view, name='index'),
-    path('card/random', views.random_flashcard_view, name='flash-card-random'),
-    path('card/<str:pk>', views.flashcard_view, name='flash-card'),
+    path('card/<str:kind>/random', views.random_flashcard_view, name='flash-card-random'),
+    path('card/<str:kind>/<str:pk>', views.flashcard_view, name='flash-card'),
     path('admin/', admin.site.urls),
 ]
 

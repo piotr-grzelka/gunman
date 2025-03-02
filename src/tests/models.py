@@ -1,17 +1,29 @@
 import uuid
 
+from django.contrib.auth import get_user_model
 from django.db import models
+
+user_model = get_user_model()
 
 
 class Question(models.Model):
+    class QuestionKind(models.TextChoices):
+        PZLOW_CANDIDATE = 'lc', 'PZŁ kandydat'
+        PZLOW_SELECTOR = 'ls', 'PZŁ selekcjoner'
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+
+    kind = models.CharField(max_length=2, choices=QuestionKind.choices)
+
     question = models.TextField()
     image = models.CharField(max_length=255, blank=True, null=True)
-    pzlow_id = models.IntegerField()
+    pzlow_id = models.IntegerField(null=True)
 
     flashcard_no = models.IntegerField(default=0)
     flashcard_question = models.TextField(null=True)
     flashcard_answer = models.TextField(null=True)
+
+    legal_basis = models.TextField(null=True)
 
     objects = models.Manager()
 
@@ -41,3 +53,25 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer
+
+
+class Test(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(user_model, on_delete=models.CASCADE)
+    question_count = models.IntegerField(default=0)
+    valid_answer_count = models.IntegerField(default=0)
+    answered_questions_count = models.IntegerField(default=0)
+    date_started = models.DateTimeField(auto_now_add=True)
+    date_finished = models.DateTimeField(null=True)
+
+    objects = models.Manager()
+
+
+class TestQuestion(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.SET_NULL, null=True)
+    valid = models.BooleanField(default=False)
+
+    objects = models.Manager()

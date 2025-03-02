@@ -4598,7 +4598,7 @@ label.upload-btn input[type=file] {
 
 .flashcard-container {
     width: 90vw;
-    height: 90vh;
+    height: 88vh;
     margin: 40px auto 20px auto;
     display: flex;
     flex-direction: column;
@@ -4634,5 +4634,15 @@ label.upload-btn input[type=file] {
 
 .flashcard-container hr {
     margin: 0 50px;
-    border-top: 1px solid rgba(0, 0, 0, 0.176);
+    border-top: 2px solid rgba(0, 0, 0, 0.176);
+}
+
+.flashcard-buttons {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flashcard-buttons > a {
+    width: 25%;
 }
